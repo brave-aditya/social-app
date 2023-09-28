@@ -3,8 +3,8 @@ import { getPosts, addPost,  deletePost } from "../controllers/post.js";
 
 const router = express.Router();
 
-router.get("/", getPosts)
-router.post("/", addPost)
+router.get("/login", getPosts)
+router.post("/register", addPost)
 router.delete("/:id", deletePost)
 
 export default router;
