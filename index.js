@@ -21,7 +21,6 @@ app.use((req,res,next)=>{
 app.use(express.json())
 let corsOptions = {
   origin : 'https://social-umber.vercel.app',
-  credentials: true,
 }
 app.use(cors(corsOptions))
 app.use(cookieParser())
