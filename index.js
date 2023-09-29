@@ -20,7 +20,7 @@ app.use((req,res,next)=>{
  
 app.use(express.json())
 let corsOptions = {
-  origin : ['http://localhost:5173'],
+  origin : ['https://social-umber.vercel.app'],
 }
 app.use(cors(corsOptions))
 app.use(cookieParser())
