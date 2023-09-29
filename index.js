@@ -8,8 +8,8 @@ import relationshipRoutes from './routes/relationships.js'
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import multer from "multer";
-const axios = require('axios');
-const path = require('path');
+import axios from 'axios';
+import path from 'path';
 import { db } from "./connect.js";
 const app = express();
 const PORT = process.env.port||8808;
