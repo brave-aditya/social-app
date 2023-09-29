@@ -18,7 +18,7 @@ app.use((req,res,next)=>{
   next()
 })
 let corsOptions = {
-  origin : 'http://localhost:5173',
+  origin : ['http://localhost:5173'],
 }
  
 app.use(express.json())
