@@ -27,37 +27,6 @@ let corsOptions = {
 app.use(cors(corsOptions))
 app.use(cookieParser())
 
-const storage = multer.memoryStorage(); // Store the image data in memory
-const upload = multer({ storage: storage });
-
-app.use(express.json());
-
-// Define a route for handling image uploads
-app.post('/api/upload', upload.single('imageFile'), async (req, res) => {
-  try {
-    // Access the uploaded image data as a buffer
-    const imageBuffer = req.file.buffer;
-
-    // Make an HTTP POST request to ImgBB to upload the image
-    const imgbbResponse = await axios.post('https://api.imgbb.com/1/upload', imageBuffer, {
-      headers: {
-        'Content-Type': 'application/octet-stream',
-      },
-      params: {
-        key: 'b99e1b7e44deb3985e33be22d597e53f', // Replace with your ImgBB API key
-      },
-    });
-
-    // Extract the URL of the uploaded image from the ImgBB response
-    const imageUrl = imgbbResponse.data.data.url;
-
-    // Send the URL or other data as a response to the frontend
-    res.status(200).json({ imageUrl });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
 
 db.connect(function(err) {
   if (err) throw err;
