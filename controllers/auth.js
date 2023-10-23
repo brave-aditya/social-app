@@ -44,19 +44,17 @@ export const login = (req, res) => {
     if (!checkPassword)
       return res.status(400).json("Wrong Password or username");
 
-    const token = jwt.sign({ id: data[0].id }, "secretkey");
+    const token = jwt.sign({ id: data[0].id }, "secretkey", { expiresIn: "1h" });
 
     const { password, ...others } = data[0];
 
     res
-      .cookie("accessToken", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none", 
-        maxAge: 3600000, 
-      })
-      .status(200)
-      .json(others);
+    .status(200)
+    .json({
+      token,
+      ...others,
+    });
+      
   });
 };
 
