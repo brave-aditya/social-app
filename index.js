@@ -13,12 +13,9 @@ const PORT = process.env.port||8808;
 
 //middlewares
 app.use(express.json())
-var corsOptions = {
-  origin: ["https://social-umber.vercel.app","http://localhost:5173"],
-  optionsSuccessStatus: 200 // For legacy browser support
-  }
+
   
-app.use(cors(corsOptions));
+app.use(cors());
 
 db.connect(function(err) {
   if (err) throw err;
