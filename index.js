@@ -12,18 +12,8 @@ const app = express();
 const PORT = process.env.port||8808;
 
 //middlewares
-app.use((req,res,next)=>{
-  res.header("Access-Control-Allow-Credentials",true)
-  next()
-})
- 
 app.use(express.json())
-let corsOptions = {
-  origin : 'https://social-umber.vercel.app',
-}
-app.use(cors(corsOptions))
-app.use(cookieParser())
-
+app.use(cors)
 
 db.connect(function(err) {
   if (err) throw err;
