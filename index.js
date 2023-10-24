@@ -13,7 +13,7 @@ const PORT = process.env.port||8808;
 
 //middlewares
 app.use(express.json())
-app.use(cors)
+app.use(cors())
 
 db.connect(function(err) {
   if (err) throw err;
