@@ -14,7 +14,7 @@ export const getComments = (req,res) => {
 }
 
 export const addComment = (req, res) => {
-  const token = req.cookies.accessToken;
+  const token = req.headers.authorization.split(' ')[1];
   if (!token) return res.status(401).json("Not Logged in!");
 
   jwt.verify(token, "secretkey", (err, userInfo) => {
