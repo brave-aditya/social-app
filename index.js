@@ -2,13 +2,12 @@ import express from "express";
 import userRoutes from './routes/users.js'
 import authRoutes from './routes/auth.js'
 import postRoutes from './routes/posts.js'
-import notimeout from './routes/notimeout.js'
 import commentRoutes from './routes/comments.js'
 import likeRoutes from './routes/likes.js'
 import relationshipRoutes from './routes/relationships.js'
-import cookieParser from "cookie-parser";
 import cors from "cors";
 import { db } from "./connect.js";
+import http from 'http';
 const app = express();
 const PORT = process.env.port||8808;
 
@@ -29,7 +28,10 @@ app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
 app.use("/api/relationships", relationshipRoutes);
-app.use("", notimeout);
+
+setInterval(function() {
+    http.get("https://social-server-evtu.onrender.com/");
+}, 300000);
 
 app.listen(PORT,()=>{
     console.log(`Api working fine on port:${PORT}`);
