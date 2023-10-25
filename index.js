@@ -7,7 +7,7 @@ import likeRoutes from './routes/likes.js'
 import relationshipRoutes from './routes/relationships.js'
 import cors from "cors";
 import { db } from "./connect.js";
-import http from 'http';
+import https from 'https';
 const app = express();
 const PORT = process.env.port||8808;
 
@@ -30,7 +30,7 @@ app.use("/api/likes", likeRoutes);
 app.use("/api/relationships", relationshipRoutes);
 
 setInterval(function() {
-    http.get("https://social-server-evtu.onrender.com/");
+    https.get("https://social-server-evtu.onrender.com/");
 }, 300000);
 
 app.listen(PORT,()=>{
