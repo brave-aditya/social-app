@@ -7,7 +7,6 @@ import likeRoutes from './routes/likes.js'
 import relationshipRoutes from './routes/relationships.js'
 import cors from "cors";
 import { db } from "./connect.js";
-import https from 'https';
 const app = express();
 const PORT = process.env.port||8808;
 
@@ -29,9 +28,6 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
 app.use("/api/relationships", relationshipRoutes);
 
-setInterval(function() {
-    https.get("https://social-server-evtu.onrender.com/");
-}, 300000);
 
 app.listen(PORT,()=>{
     console.log(`Api working fine on port:${PORT}`);
